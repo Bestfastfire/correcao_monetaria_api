@@ -1,3 +1,10 @@
+const toInit = false
+
+if(!toInit){
+    return
+
+}
+
 const puppeteer = require('puppeteer');
 const fs = require('fs')
 
