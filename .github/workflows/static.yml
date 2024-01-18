@@ -39,7 +39,7 @@ jobs:
           # Upload entire repository
           token: ${{ secrets.GITHUB_TOKEN }}
           enablement: true
-          path: '.'
+          path: './src/'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
