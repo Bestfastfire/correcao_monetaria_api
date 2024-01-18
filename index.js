@@ -67,7 +67,7 @@ const extractJson = async (url, name) => {
     });
 
     await browser.close();
-    fs.writeFileSync(__dirname + `/src/${name}.json`, JSON.stringify(data))
+    fs.writeFileSync(__dirname + `/docs/${name}.json`, JSON.stringify(data))
     console.log(`done extracting to -> ${name}`)
 };
 
