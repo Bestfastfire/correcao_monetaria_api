@@ -1,10 +1,3 @@
-const toInit = false
-
-if(!toInit){
-    return
-
-}
-
 const puppeteer = require('puppeteer');
 const fs = require('fs')
 
@@ -69,6 +62,7 @@ const extractJson = async (url, name) => {
     await browser.close();
     fs.writeFileSync(__dirname + `/docs/${name}.json`, JSON.stringify(data))
     console.log(`done extracting to -> ${name}`)
+    return data
 };
 
 const extractAll = async () => {
@@ -87,10 +81,14 @@ const extractAll = async () => {
         }
     ]
 
+    const data = {}
+
     for(let item of urls){
-        await extractJson(item.url, item.name)
+        data[item.name] = await extractJson(item.url, item.name)
 
     }
+
+    fs.writeFileSync(__dirname + `/docs/all_indexes.json`, JSON.stringify(data))
 }
 
 extractAll().then(r => console.log(`done`))
