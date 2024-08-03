@@ -38,7 +38,7 @@ const extractJson = async (url, name) => {
             const rowData = {};
 
             row.querySelectorAll('td').forEach((cell, index) => {
-                if(cell.parentNode.children.length > 12){
+                if(cell.parentNode.children.length > 12 || !cell.parentNode.children[0].textContent.includes('/')){
                     let text = cell.textContent.trim();
 
                     if(text.length > 0 && text !== '-'){
